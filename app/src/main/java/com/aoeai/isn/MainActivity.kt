@@ -9,9 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.aoeai.isn.random_result.bagua.Yao
 import com.aoeai.isn.random_result.bagua.YaoShowcase
-import com.aoeai.isn.random_result.bagua.data.YaoCreator
 import com.aoeai.isn.ui.theme.InterstellarNavigatorTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,15 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val yaoDataList = listOf(
-                        YaoCreator.yin(),
-                        YaoCreator.yang(),
-                        YaoCreator.yin(),
-                        YaoCreator.yang(),
-                        YaoCreator.yin(),
-                        YaoCreator.yang()
-                    )
-                    YaoShowcase(yaoDataList = yaoDataList)
+                    YaoShowcase(count = 6)
                 }
             }
         }
@@ -43,6 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     InterstellarNavigatorTheme {
-        Yao(YaoCreator.yin())
+
     }
 }
