@@ -30,6 +30,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.aoeai.isn.random_result.bagua.data.YaoCreator
 import com.aoeai.isn.random_result.bagua.data.YaoDto
 
@@ -82,11 +83,11 @@ fun YaoShowcase() {
         Column(modifier = Modifier.align(Alignment.BottomCenter)
             ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                CheckCountButton(text = "1", onClick = { count = 1 })
+                ChooseCountButton(text = "1", onClick = { count = 1 })
                 Spacer(modifier = Modifier.size(10.dp))
-                CheckCountButton(text = "2", onClick = { count = 2 })
+                ChooseCountButton(text = "2", onClick = { count = 2 })
                 Spacer(modifier = Modifier.size(10.dp))
-                CheckCountButton(text = "6", onClick = { count = 6 })
+                ChooseCountButton(text = "6", onClick = { count = 6 })
             }
 
             Button(modifier = Modifier
@@ -95,14 +96,14 @@ fun YaoShowcase() {
                 .padding(10.dp)
                 .align(Alignment.CenterHorizontally),
                 onClick = { yaoDataList = YaoCreator.randomList(count) }) {
-                Text(text = "$count")
+                Text(text = "$count", fontSize = 30.sp)
             }
         }
     }
 }
 
 @Composable
-fun CheckCountButton(text: String, onClick: () -> Unit) {
+fun ChooseCountButton(text: String, onClick: () -> Unit) {
     FilledTonalButton(onClick = { onClick() }) {
         Text(text)
     }
