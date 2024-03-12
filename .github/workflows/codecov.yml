@@ -12,6 +12,8 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,17 +29,32 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Build SampleApplication
-        run: ./gradlew --no-daemon assembleDebug
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
+#      - name: Build SampleApplication
+#        run: ./gradlew --no-daemon assembleDebug
 
       - name: Test with Gradle
         run: ./gradlew test
 
 #      - name: Generate JaCoCo test report
 #        run: ./gradlew jacocoTestReport
+
+      - name: Run Coverage
+        run: |
+          ./gradlew testCoverage
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.6.1
+        with:
+          paths: |
+            ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
+            ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
