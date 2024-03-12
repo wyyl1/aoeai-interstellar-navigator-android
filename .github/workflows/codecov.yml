@@ -1,28 +1,14 @@
-#name: Codecov workflow
-#
-#on: [push, pull_request]
-#
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    name: Test Code
-#    steps:
-#      - name: Upload coverage reports to Codecov
-#        uses: codecov/codecov-action@v4.0.1
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
-#          slug: aoeai/aoeai-interstellar-navigator-android
+name: Codecov workflow
 
+on: [push, pull_request]
 
-codecov:
-  token: ${{ secrets.CODECOV_TOKEN }}
-  bot: "codecov-io"
-  ci:
-    - "travis.org"
-  strict_yaml_branch: "yaml-config"
-  max_report_age: 24
-  disable_default_path_fixes: no
-  require_ci_to_pass: yes
-  notify:
-    after_n_builds: 2
-    wait_for_ci: yes
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Test Code
+    steps:
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: aoeai/aoeai-interstellar-navigator-android
