@@ -3,7 +3,9 @@ package com.aoeai.isn.random_result.bagua
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -12,8 +14,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -57,7 +61,8 @@ fun Yao(yaoData: YaoDto) {
 }
 
 @Composable
-fun YaoShowcase(count: Int) {
+fun YaoShowcase() {
+    var count by remember { mutableStateOf(6) }
     var yaoDataList by remember { mutableStateOf(YaoCreator.randomList(count)) }
 
     Box(
@@ -74,13 +79,32 @@ fun YaoShowcase(count: Int) {
             }
         }
 
-        Button(modifier = Modifier
-            .align(Alignment.BottomCenter)
-            .clip(CircleShape)
-            .size(100.dp)
-            .padding(10.dp),
-            onClick = { yaoDataList = YaoCreator.randomList(count) }) {
+        Column(modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                CheckCountButton(text = "1", onClick = { count = 1 })
+                Spacer(modifier = Modifier.size(10.dp))
+                CheckCountButton(text = "2", onClick = { count = 2 })
+                Spacer(modifier = Modifier.size(10.dp))
+                CheckCountButton(text = "6", onClick = { count = 6 })
+            }
+
+            Button(modifier = Modifier
+                .clip(CircleShape)
+                .size(100.dp)
+                .padding(10.dp)
+                .align(Alignment.CenterHorizontally),
+                onClick = { yaoDataList = YaoCreator.randomList(count) }) {
+                Text(text = "$count")
+            }
         }
+    }
+}
+
+@Composable
+fun CheckCountButton(text: String, onClick: () -> Unit) {
+    FilledTonalButton(onClick = { onClick() }) {
+        Text(text)
     }
 }
 
@@ -93,7 +117,7 @@ fun YaoPreview() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            YaoShowcase(count = 6)
+            YaoShowcase()
         }
     }
 }
