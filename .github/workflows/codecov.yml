@@ -3,4 +3,4 @@
   with:
     token: ${{ secrets.CODECOV_TOKEN }}
     slug: aoeai/aoeai-interstellar-navigator-android
-# 1
+# 2
