@@ -1,4 +1,4 @@
-package com.aoeai.isn.random_result.bagua
+package com.aoeai.isn.bagua.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
@@ -31,8 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.aoeai.isn.random_result.bagua.data.YaoCreator
-import com.aoeai.isn.random_result.bagua.data.YaoDto
+import com.aoeai.isn.bagua.data.YaoCreator
+import com.aoeai.isn.bagua.data.YaoDto
 
 @Composable
 fun DrawLine(color: Color, modifier: Modifier) {
@@ -80,12 +80,22 @@ fun YaoShowcase() {
             }
         }
 
-        Column(modifier = Modifier.align(Alignment.BottomCenter)
-            ) {
+        Column(
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ) {
+            Text(
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                text = "$count",
+                fontSize = 30.sp,
+                color = Color.Black
+            )
+
             Row(verticalAlignment = Alignment.CenterVertically) {
                 ChooseCountButton(text = "1", onClick = { count = 1 })
                 Spacer(modifier = Modifier.size(10.dp))
                 ChooseCountButton(text = "2", onClick = { count = 2 })
+                Spacer(modifier = Modifier.size(10.dp))
+                ChooseCountButton(text = "3", onClick = { count = 3 })
                 Spacer(modifier = Modifier.size(10.dp))
                 ChooseCountButton(text = "6", onClick = { count = 6 })
             }
@@ -96,7 +106,6 @@ fun YaoShowcase() {
                 .padding(10.dp)
                 .align(Alignment.CenterHorizontally),
                 onClick = { yaoDataList = YaoCreator.randomList(count) }) {
-                Text(text = "$count", fontSize = 30.sp)
             }
         }
     }

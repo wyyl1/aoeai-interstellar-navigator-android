@@ -1,4 +1,4 @@
-package com.aoeai.isn.random_result.bagua.data
+package com.aoeai.isn.bagua.data
 
 import kotlin.random.Random
 
