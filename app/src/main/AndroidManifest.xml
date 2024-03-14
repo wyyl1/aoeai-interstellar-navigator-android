@@ -13,9 +13,9 @@
         android:theme="@style/Theme.InterstellarNavigator"
         tools:targetApi="31">
         <activity
-            android:name=".random_result.bagua.Yao"
+            android:name=".bagua.BaguaActivity"
             android:exported="false"
-            android:label="@string/title_activity_yao"
+            android:label="@string/title_activity_bagua"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".MainActivity"

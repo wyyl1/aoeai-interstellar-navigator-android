@@ -1,10 +1,10 @@
-package com.aoeai.isn.random_result.bagua.data
+package com.aoeai.isn.bagua.data
 
 import androidx.compose.ui.graphics.Color
 
-data class YinYaoDto internal constructor(
+data class YangYaoDto internal constructor(
     override val leftRightColor: Color,
     override val middleColor: Color
 ) : YaoDto {
-    override val value: Byte = 0
+    override val value: Byte = 1
 }
