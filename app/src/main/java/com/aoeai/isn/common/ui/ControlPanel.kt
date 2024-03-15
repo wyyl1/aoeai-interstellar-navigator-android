@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 fun ControlPanel(
     modifier: Modifier,
     initialCount: Int,
+    counts: List<Int>,
     onCountSelected: (Int) -> Unit,
     onClick: () -> Unit
 ) {
@@ -35,7 +36,7 @@ fun ControlPanel(
     ) {
         val columnModifier = Modifier.align(Alignment.CenterHorizontally)
         CountText(count = count, modifier = columnModifier)
-        ChooseCountButtons(counts = listOf(1, 2, 3, 6), modifier = columnModifier) {
+        ChooseCountButtons(counts = counts, modifier = columnModifier) {
             count = it
             onCountSelected(it)
         }
