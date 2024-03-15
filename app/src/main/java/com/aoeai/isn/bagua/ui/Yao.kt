@@ -35,6 +35,18 @@ import com.aoeai.isn.bagua.data.YaoCreator
 import com.aoeai.isn.bagua.data.YaoDto
 
 @Composable
+fun Yao(yaoData: YaoDto) {
+    Row(modifier = Modifier.padding(all = 20.dp)) {
+        // 3/7
+        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
+        // 1/7
+        DrawLine(yaoData.middleColor, modifier = Modifier.weight(1f))
+        // 3/7
+        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
+    }
+}
+
+@Composable
 fun DrawLine(color: Color, modifier: Modifier) {
     Canvas(modifier = modifier.fillMaxHeight()) {
         val startY = size.height / 2
@@ -46,18 +58,6 @@ fun DrawLine(color: Color, modifier: Modifier) {
             strokeWidth = 30f, // Increase the strokeWidth to make the line thicker
             alpha = 1f
         )
-    }
-}
-
-@Composable
-fun Yao(yaoData: YaoDto) {
-    Row(modifier = Modifier.padding(all = 20.dp)) {
-        // 3/7
-        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
-        // 1/7
-        DrawLine(yaoData.middleColor, modifier = Modifier.weight(1f))
-        // 3/7
-        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
     }
 }
 

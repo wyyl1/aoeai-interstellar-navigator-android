@@ -2,4 +2,5 @@
     <string name="app_name">Interstellar Navigator</string>
     <string name="title_activity_yao">Yao</string>
     <string name="title_activity_bagua">BaguaActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
