@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.aoeai.isn.bagua.ui.YaoShowcase
+import com.aoeai.isn.bagua.ui.YaoView
 import com.aoeai.isn.ui.theme.InterstellarNavigatorTheme
 
 class BaguaActivity : ComponentActivity() {
@@ -22,7 +22,7 @@ class BaguaActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorScheme.background
                 ) {
-                    YaoShowcase()
+                    YaoView()
                 }
             }
         }
@@ -33,6 +33,6 @@ class BaguaActivity : ComponentActivity() {
 @Composable
 fun YaoPreview() {
     InterstellarNavigatorTheme {
-        YaoShowcase()
+        YaoView()
     }
 }
