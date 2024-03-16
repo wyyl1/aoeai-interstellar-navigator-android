@@ -1,11 +1,10 @@
-package com.aoeai.isn.random_result.bagua.data
+package com.aoeai.isn.bagua.data
 
-import com.aoeai.isn.bagua.data.YaoRandom
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 
-class YaoRandomTest{
+class YaoRandomTest {
     @Test
     fun `should return 0 or 1`() {
         val resultSet = mutableSetOf<Int>()
