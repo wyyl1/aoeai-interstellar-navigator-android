@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.aoeai.isn.R
 import com.aoeai.isn.bagua.BaguaActivity
 import com.aoeai.isn.home.data.FunctionKeyDto
+import com.aoeai.isn.number.NumberActivity
 import com.aoeai.isn.ui.theme.InterstellarNavigatorTheme
 
 @Composable
@@ -27,7 +28,7 @@ fun Home() {
 
     val keys = listOf(
         FunctionKeyDto(R.drawable.bagua, BaguaActivity::class.java),
-        FunctionKeyDto(R.drawable.bagua, BaguaActivity::class.java),
+        FunctionKeyDto(R.drawable.number, NumberActivity::class.java),
         FunctionKeyDto(R.drawable.bagua, BaguaActivity::class.java))
 
     LazyVerticalGrid(

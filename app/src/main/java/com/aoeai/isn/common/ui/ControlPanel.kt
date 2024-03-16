@@ -1,10 +1,11 @@
 package com.aoeai.isn.common.ui
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
@@ -48,7 +49,7 @@ fun ControlPanel(
 }
 
 @Composable
-fun CountText(count: Int, modifier: Modifier) {
+private fun CountText(count: Int, modifier: Modifier) {
     Text(
         modifier = modifier,
         text = "$count",
@@ -58,9 +59,9 @@ fun CountText(count: Int, modifier: Modifier) {
 }
 
 @Composable
-fun ChooseCountButtons(counts: List<Int>, modifier: Modifier, onCountSelected: (Int) -> Unit) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        counts.forEachIndexed { index, count ->
+private fun ChooseCountButtons(counts: List<Int>, modifier: Modifier, onCountSelected: (Int) -> Unit) {
+    LazyRow(modifier = modifier) {
+        itemsIndexed(counts) { index, count ->
             ChooseCountButton(text = "$count", onClick = { onCountSelected(count) })
             if (index < counts.size - 1) {
                 Spacer(modifier = Modifier.size(10.dp))
@@ -70,7 +71,7 @@ fun ChooseCountButtons(counts: List<Int>, modifier: Modifier, onCountSelected: (
 }
 
 @Composable
-fun RandomButton(modifier: Modifier, onClick: () -> Unit) {
+private fun RandomButton(modifier: Modifier, onClick: () -> Unit) {
     Button(
         modifier = modifier
             .clip(CircleShape)

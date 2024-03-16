@@ -29,33 +29,6 @@ import com.aoeai.isn.bagua.data.YaoDto
 import com.aoeai.isn.common.ui.ControlPanel
 
 @Composable
-fun Yao(yaoData: YaoDto) {
-    Row(modifier = Modifier.padding(all = 20.dp)) {
-        // 3/7
-        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
-        // 1/7
-        DrawLine(yaoData.middleColor, modifier = Modifier.weight(1f))
-        // 3/7
-        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
-    }
-}
-
-@Composable
-fun DrawLine(color: Color, modifier: Modifier) {
-    Canvas(modifier = modifier.fillMaxHeight()) {
-        val startY = size.height / 2
-        val endY = size.height / 2
-        drawLine(
-            color = color,
-            start = Offset(0f, startY),
-            end = Offset(size.width, endY),
-            strokeWidth = 30f, // Increase the strokeWidth to make the line thicker
-            alpha = 1f
-        )
-    }
-}
-
-@Composable
 fun YaoView() {
     var count by remember { mutableIntStateOf(6) }
     var yaoDataList by remember { mutableStateOf(YaoCreator.randomList(count)) }
@@ -80,6 +53,33 @@ fun YaoView() {
             initialCount = count,
             counts = listOf(1, 2, 3, 6)
         ) { yaoDataList = YaoCreator.randomList(count) }
+    }
+}
+
+@Composable
+private fun Yao(yaoData: YaoDto) {
+    Row(modifier = Modifier.padding(all = 20.dp)) {
+        // 3/7
+        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
+        // 1/7
+        DrawLine(yaoData.middleColor, modifier = Modifier.weight(1f))
+        // 3/7
+        DrawLine(yaoData.leftRightColor, modifier = Modifier.weight(3f))
+    }
+}
+
+@Composable
+private fun DrawLine(color: Color, modifier: Modifier) {
+    Canvas(modifier = modifier.fillMaxHeight()) {
+        val startY = size.height / 2
+        val endY = size.height / 2
+        drawLine(
+            color = color,
+            start = Offset(0f, startY),
+            end = Offset(size.width, endY),
+            strokeWidth = 30f, // Increase the strokeWidth to make the line thicker
+            alpha = 1f
+        )
     }
 }
 
