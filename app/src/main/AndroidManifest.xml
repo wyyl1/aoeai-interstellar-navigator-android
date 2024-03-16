@@ -15,7 +15,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.InterstellarNavigator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,27 +25,22 @@
         <activity
             android:name=".common.EmptyTestActivity"
             android:exported="false"
-            android:label="@string/title_activity_empty_test"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".bagua.BaguaActivity"
             android:exported="false"
-            android:label="@string/title_activity_bagua"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".number.NumberActivity"
             android:exported="false"
-            android:label="@string/title_activity_number"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_zodiac_signs.TwelveZodiacSignsActivity"
             android:exported="false"
-            android:label="@string/twelve_zodiac_signs"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_chinese_zodiac_animals.TwelveChineseZodiacAnimalsActivity"
             android:exported="false"
-            android:label="@string/twelve_chinese_zodiac_animals"
             android:theme="@style/Theme.InterstellarNavigator" />
     </application>
 
