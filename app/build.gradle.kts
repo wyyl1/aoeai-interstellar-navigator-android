@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.aoeai.isn"
+    namespace = "com.aoeai.qg"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.aoeai.isn"
+        applicationId = "com.aoeai.qg"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
