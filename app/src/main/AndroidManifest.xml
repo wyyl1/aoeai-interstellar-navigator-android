@@ -43,6 +43,11 @@
             android:exported="false"
             android:label="@string/twelve_zodiac_signs"
             android:theme="@style/Theme.InterstellarNavigator" />
+        <activity
+            android:name=".twelve_chinese_zodiac_animals.TwelveChineseZodiacAnimalsActivity"
+            android:exported="false"
+            android:label="@string/twelve_chinese_zodiac_animals"
+            android:theme="@style/Theme.InterstellarNavigator" />
     </application>
 
 </manifest>

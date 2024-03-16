@@ -12,7 +12,7 @@ class TwelveZodiacSignsCreator {
                 return signs[index]
             }
 
-            val signs = listOf(
+            private val signs = listOf(
                 "♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"
             )
         }

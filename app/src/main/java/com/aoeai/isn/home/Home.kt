@@ -21,6 +21,7 @@ import com.aoeai.isn.R
 import com.aoeai.isn.bagua.BaguaActivity
 import com.aoeai.isn.home.data.FunctionKeyDto
 import com.aoeai.isn.number.NumberActivity
+import com.aoeai.isn.twelve_chinese_zodiac_animals.TwelveChineseZodiacAnimalsActivity
 import com.aoeai.isn.twelve_zodiac_signs.TwelveZodiacSignsActivity
 import com.aoeai.isn.ui.theme.InterstellarNavigatorTheme
 
@@ -30,7 +31,9 @@ fun Home() {
     val keys = listOf(
         FunctionKeyDto(R.drawable.bagua, BaguaActivity::class.java),
         FunctionKeyDto(R.drawable.number, NumberActivity::class.java),
-        FunctionKeyDto(R.drawable.twelve_zodiac_signs, TwelveZodiacSignsActivity::class.java))
+        FunctionKeyDto(R.drawable.twelve_zodiac_signs, TwelveZodiacSignsActivity::class.java),
+        FunctionKeyDto(R.drawable.twelve_chinese_zodiac_animals, TwelveChineseZodiacAnimalsActivity::class.java))
+
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2), // Set the number of columns to 2
