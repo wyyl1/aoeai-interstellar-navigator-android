@@ -38,6 +38,11 @@
             android:exported="false"
             android:label="@string/title_activity_number"
             android:theme="@style/Theme.InterstellarNavigator" />
+        <activity
+            android:name=".twelve_zodiac_signs.TwelveZodiacSignsActivity"
+            android:exported="false"
+            android:label="@string/twelve_zodiac_signs"
+            android:theme="@style/Theme.InterstellarNavigator" />
     </application>
 
 </manifest>

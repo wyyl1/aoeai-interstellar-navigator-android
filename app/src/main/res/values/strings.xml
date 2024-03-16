@@ -5,4 +5,5 @@
     <string name="title_activity_yao">Yao</string>
     <string name="title_activity_bagua">BaguaActivity</string>
     <string name="title_activity_number">NumberActivity</string>
+    <string name="twelve_zodiac_signs">TwelveZodiacSignsActivity</string>
 </resources>
