@@ -3,6 +3,35 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     // use JUnit5 for tests
     id("de.mannodermaus.android-junit5") version "1.10.0.0"
+    jacoco
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+tasks.register("uploadCoverageToCodecov") {
+    doLast {
+        val codecovToken: String? = System.getenv("CODECOV_TOKEN")
+        if (codecovToken != null) {
+            val processBuilder = ProcessBuilder(
+                "bash",
+                "-c",
+                "curl -s https://codecov.io/bash | bash -s -- -t $codecovToken"
+            )
+            processBuilder.directory(project.rootDir)
+            val process = processBuilder.start()
+            process.waitFor()
+            if (process.exitValue() != 0) {
+                throw GradleException("Failed to upload coverage to Codecov")
+            }
+        } else {
+            throw GradleException("CODECOV_TOKEN environment variable is not set")
+        }
+    }
+}
+tasks.named("check") {
+    dependsOn("uploadCoverageToCodecov")
 }
 
 android {
@@ -32,8 +61,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -49,6 +78,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
