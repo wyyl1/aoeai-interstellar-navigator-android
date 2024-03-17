@@ -4,6 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
+      secrets: read
       pull-requests: write
     steps:
       - name: Checkout
