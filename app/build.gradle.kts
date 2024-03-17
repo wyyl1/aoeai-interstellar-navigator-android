@@ -11,6 +11,8 @@ jacoco {
 }
 
 tasks.register("generateJacocoTestReport") {
+    group = "Verification"
+    description = "Generates Jacoco coverage reports after running tests."
     dependsOn("testDebugUnitTest")
     dependsOn("createDebugCoverageReport")
 }
