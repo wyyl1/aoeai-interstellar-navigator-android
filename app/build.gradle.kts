@@ -10,29 +10,30 @@ jacoco {
     toolVersion = "0.8.11"
 }
 
-tasks.register("uploadCoverageToCodecov") {
-    doLast {
-        val codecovToken: String? = System.getenv("CODECOV_TOKEN")
-        if (codecovToken != null) {
-            val processBuilder = ProcessBuilder(
-                "bash",
-                "-c",
-                "curl -s https://codecov.io/bash | bash -s -- -t $codecovToken"
-            )
-            processBuilder.directory(project.rootDir)
-            val process = processBuilder.start()
-            process.waitFor()
-            if (process.exitValue() != 0) {
-                throw GradleException("Failed to upload coverage to Codecov")
-            }
-        } else {
-            throw GradleException("CODECOV_TOKEN environment variable is not set")
-        }
-    }
-}
-tasks.named("check") {
-    dependsOn("uploadCoverageToCodecov")
-}
+//tasks.register("uploadCoverageToCodecov") {
+//    doLast {
+////        val codecovToken: String? = System.getenv("CODECOV_TOKEN")
+//        val codecovToken: String = "60411876-3693-4fe8-9a1f-8245d9255c1a"
+//        if (codecovToken != null) {
+//            val processBuilder = ProcessBuilder(
+//                "bash",
+//                "-c",
+//                "curl -s https://codecov.io/bash | bash -s -- -t $codecovToken"
+//            )
+//            processBuilder.directory(project.rootDir)
+//            val process = processBuilder.start()
+//            process.waitFor()
+//            if (process.exitValue() != 0) {
+//                throw GradleException("Failed to upload coverage to Codecov")
+//            }
+//        } else {
+//            throw GradleException("CODECOV_TOKEN environment variable is not set")
+//        }
+//    }
+//}
+//tasks.named("check") {
+//    dependsOn("uploadCoverageToCodecov")
+//}
 
 android {
     namespace = "com.aoeai.qg"
