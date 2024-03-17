@@ -1,12 +1,3 @@
-#
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v4-beta
-#        with:
-#          flags: smart-tests
-#          verbose: true
-#        env:
-#          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
 name: Run tests and upload coverage to Codecov
 on: [push, pull_request]
 jobs:
@@ -38,47 +29,8 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew test
 
-#      - name: Upload coverage reports to Codecov
-#        run: |
-#          # Replace `linux` below with the appropriate OS
-#          # Options are `alpine`, `linux`, `macos`, `windows`
-#          curl -Os https://uploader.codecov.io/latest/linux/codecov
-#          chmod +x codecov
-#          ./codecov -t ${CODECOV_TOKEN}
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4-beta
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
         with:
-          flags: smart-tests
-          verbose: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-#      - name: Generate JaCoCo test report
-#        run: ./gradlew jacocoTestReport
-
-#      - name: Run Coverage
-#        run: |
-#          ./gradlew testCoverage
-#
-#      - name: Add coverage to PR
-#        id: jacoco
-#        uses: madrapps/jacoco-report@v1.6.1
-#        with:
-#          paths: |
-#            ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
-#            ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          min-coverage-overall: 40
-#          min-coverage-changed-files: 60
-
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v2
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
-#          files: ./app/build/reports/jacoco/testDebugUnitTestCoverage/testDebugUnitTestCoverage.xml
-#          flags: unittests
-#          name: codecov-umbrella
-#          fail_ci_if_error: true
-#          verbose: true
-
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: aoeai/aoeai-qigua-android
