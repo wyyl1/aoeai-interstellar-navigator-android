@@ -18,16 +18,18 @@ class YaoCreator {
 
         private fun yin(): YinYaoDto {
             return YinYaoDto(
-                leftRightColor = Color.Black,
+                leftRightColor = lineColor,
                 middleColor = Color.Transparent
             )
         }
 
         private fun yang(): YangYaoDto {
             return YangYaoDto(
-                leftRightColor = Color.Black,
-                middleColor = Color.Black
+                leftRightColor = lineColor,
+                middleColor = lineColor
             )
         }
+
+        private val lineColor = Color.Black
     }
 }
