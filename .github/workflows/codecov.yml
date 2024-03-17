@@ -26,8 +26,8 @@ jobs:
 #      - name: Build SampleApplication
 #        run: ./gradlew --no-daemon assembleDebug
 
-      - name: Test with Gradle
-        run: ./gradlew test
+      - name: Build with Gradle
+        run: ./gradlew build
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
