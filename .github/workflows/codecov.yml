@@ -9,7 +9,7 @@ on:
         required: false
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
