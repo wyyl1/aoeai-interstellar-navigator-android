@@ -10,6 +10,12 @@ jacoco {
     toolVersion = "0.8.11"
 }
 
+tasks.register("generateJacocoTestReport") {
+    dependsOn("testDebugUnitTest")
+    dependsOn("createDebugCoverageReport")
+}
+
+
 //tasks.register("uploadCoverageToCodecov") {
 //    doLast {
 ////        val codecovToken: String? = System.getenv("CODECOV_TOKEN")
@@ -59,6 +65,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            testCoverage {
+                enableUnitTestCoverage = true
+                enableAndroidTestCoverage = true
+            }
         }
     }
     compileOptions {
