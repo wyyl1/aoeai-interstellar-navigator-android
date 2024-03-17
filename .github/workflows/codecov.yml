@@ -23,5 +23,5 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
-          token: ${{ secrets.ENV_CODECOV_TOKEN }}
+          token: ${{ secrets.ORG_CODECOV_TOKEN }}
           slug: aoeai/aoeai-qigua-android
