@@ -15,7 +15,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.InterstellarNavigator">
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
+            android:theme="@style/CustomLauncherBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,22 +27,32 @@
         <activity
             android:name=".common.EmptyTestActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".bagua.BaguaActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".number.NumberActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_zodiac_signs.TwelveZodiacSignsActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_chinese_zodiac_animals.TwelveChineseZodiacAnimalsActivity"
             android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
     </application>
 
