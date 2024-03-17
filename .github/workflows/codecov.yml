@@ -1,18 +1,9 @@
 name: Run tests and upload coverage to Codecov
-on:
-  push:
-  pull_request:
-  workflow_call:
-    secrets:
-      CODECOV_TOKEN:
-        description: 'A token passed from the caller workflow'
-        required: true
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
