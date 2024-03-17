@@ -4,9 +4,9 @@ on:
   pull_request:
   workflow_call:
     secrets:
-      access-token:
+      CODECOV_TOKEN:
         description: 'A token passed from the caller workflow'
-        required: false
+        required: true
 
 jobs:
   test:
