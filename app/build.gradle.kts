@@ -10,38 +10,35 @@ jacoco {
     toolVersion = "0.8.11"
 }
 
-tasks.register("generateJacocoTestReport") {
-    group = "Verification"
-    description = "Generates Jacoco coverage reports after running tests."
-    dependsOn("testDebugUnitTest")
-    dependsOn("createDebugCoverageReport")
+tasks.withType<Test> {
+    extensions.configure<JacocoTaskExtension> {}
 }
 
+tasks.withType<JacocoReport> {
+    executionData.setFrom(fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}", "includes" to listOf("jacoco/test.exec"))))
+    reports {
+        html
+        xml
+    }
+}
 
-//tasks.register("uploadCoverageToCodecov") {
-//    doLast {
-////        val codecovToken: String? = System.getenv("CODECOV_TOKEN")
-//        val codecovToken: String = "60411876-3693-4fe8-9a1f-8245d9255c1a"
-//        if (codecovToken != null) {
-//            val processBuilder = ProcessBuilder(
-//                "bash",
-//                "-c",
-//                "curl -s https://codecov.io/bash | bash -s -- -t $codecovToken"
-//            )
-//            processBuilder.directory(project.rootDir)
-//            val process = processBuilder.start()
-//            process.waitFor()
-//            if (process.exitValue() != 0) {
-//                throw GradleException("Failed to upload coverage to Codecov")
-//            }
-//        } else {
-//            throw GradleException("CODECOV_TOKEN environment variable is not set")
-//        }
-//    }
-//}
-//tasks.named("check") {
-//    dependsOn("uploadCoverageToCodecov")
-//}
+tasks.register<JacocoReport>("jacocoTestReport") {
+    group = "Verification"
+    description = "Generates Jacoco coverage reports after running tests."
+
+    dependsOn("test")
+
+    val debugTree = fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}/tmp/kotlin-classes/debug"))
+    val mainSrc = "${project.projectDir}/src/main/java"
+
+    classDirectories.setFrom(files(debugTree))
+    sourceDirectories.setFrom(files(mainSrc))
+    executionData.setFrom(fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}", "includes" to listOf("jacoco/test.exec"))))
+
+    doLast {
+        println("View coverage report at file://${reports.html.outputLocation.get().asFile}/index.html")
+    }
+}
 
 android {
     namespace = "com.aoeai.qg"
