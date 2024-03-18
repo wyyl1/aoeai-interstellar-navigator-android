@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.aoeai.qg.home.Home
+import com.aoeai.qg.home.ui.Home
 import com.aoeai.qg.ui.theme.InterstellarNavigatorTheme
 
 class MainActivity : ComponentActivity() {
