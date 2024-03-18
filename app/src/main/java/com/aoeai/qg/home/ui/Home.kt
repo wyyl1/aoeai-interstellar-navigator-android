@@ -49,6 +49,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun Home() {
+    Drawer()
+
     val keys = listOf(
         FunctionKeyDto(R.drawable.bagua, BaguaActivity::class.java),
         FunctionKeyDto(R.drawable.number, NumberActivity::class.java),
@@ -75,8 +77,6 @@ fun Home() {
             }
         )
     }
-
-    Drawer()
 }
 
 @Composable
@@ -135,7 +135,6 @@ private fun Drawer() {
         },
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.TopStart
         ) {
             IconButton(
