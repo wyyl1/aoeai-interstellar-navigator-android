@@ -15,8 +15,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.InterstellarNavigator">
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
+            android:theme="@style/CustomLauncherBackgroundTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,27 +27,32 @@
         <activity
             android:name=".common.EmptyTestActivity"
             android:exported="false"
-            android:label="@string/title_activity_empty_test"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".bagua.BaguaActivity"
             android:exported="false"
-            android:label="@string/title_activity_bagua"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".number.NumberActivity"
             android:exported="false"
-            android:label="@string/title_activity_number"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_zodiac_signs.TwelveZodiacSignsActivity"
             android:exported="false"
-            android:label="@string/twelve_zodiac_signs"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
         <activity
             android:name=".twelve_chinese_zodiac_animals.TwelveChineseZodiacAnimalsActivity"
             android:exported="false"
-            android:label="@string/twelve_chinese_zodiac_animals"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity"
             android:theme="@style/Theme.InterstellarNavigator" />
     </application>
 

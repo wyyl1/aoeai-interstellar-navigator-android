@@ -3,14 +3,49 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     // use JUnit5 for tests
     id("de.mannodermaus.android-junit5") version "1.10.0.0"
+    jacoco
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+tasks.withType<Test> {
+    extensions.configure<JacocoTaskExtension> {}
+}
+
+tasks.withType<JacocoReport> {
+    executionData.setFrom(fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}", "includes" to listOf("jacoco/test.exec"))))
+    reports {
+        html
+        xml
+    }
+}
+
+tasks.register<JacocoReport>("jacocoTestReport") {
+    group = "Verification"
+    description = "Generates Jacoco coverage reports after running tests."
+
+    dependsOn("test")
+
+    val debugTree = fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}/tmp/kotlin-classes/debug"))
+    val mainSrc = "${project.projectDir}/src/main/java"
+
+    classDirectories.setFrom(files(debugTree))
+    sourceDirectories.setFrom(files(mainSrc))
+    executionData.setFrom(fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}", "includes" to listOf("jacoco/test.exec"))))
+
+    doLast {
+        println("View coverage report at file://${reports.html.outputLocation.get().asFile}/index.html")
+    }
 }
 
 android {
-    namespace = "com.aoeai.isn"
+    namespace = "com.aoeai.qg"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.aoeai.isn"
+        applicationId = "com.aoeai.qg"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
@@ -30,13 +65,19 @@ android {
                 "proguard-rules.pro"
             )
         }
+        getByName("debug") {
+            testCoverage {
+                enableUnitTestCoverage = true
+                enableAndroidTestCoverage = true
+            }
+        }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -49,6 +90,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
