@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -49,7 +51,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -59,7 +61,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -91,6 +93,14 @@ android {
         }
     }
     buildToolsVersion = "34.0.0"
+
+    applicationVariants.all {
+        val variant = this
+        variant.outputs.all {
+            val output = this as ApkVariantOutputImpl
+            output.outputFileName = "qigua-${variant.versionName}-${variant.buildType.name}.apk"
+        }
+    }
 }
 
 dependencies {
