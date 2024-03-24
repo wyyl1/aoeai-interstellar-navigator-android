@@ -29,6 +29,7 @@ tasks.register<JacocoReport>("jacocoTestReport") {
     description = "Generates Jacoco coverage reports after running tests."
 
     dependsOn("test")
+    dependsOn("createDebugCoverageReport")
 
     val debugTree = fileTree(mapOf("dir" to "${project.layout.buildDirectory.get().asFile}/tmp/kotlin-classes/debug"))
     val mainSrc = "${project.projectDir}/src/main/java"
