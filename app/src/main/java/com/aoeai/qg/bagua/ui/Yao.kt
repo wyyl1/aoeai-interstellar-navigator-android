@@ -49,9 +49,9 @@ fun YaoView() {
 
         ControlPanel(
             modifier = Modifier.align(Alignment.BottomCenter),
-            onCountSelected = { count = it },
-            initialCount = count,
-            counts = listOf(1, 2, 3, 6)
+            onNumberSelected = { count = it },
+            initialNumber = count,
+            numbers = listOf(1, 2, 3, 6)
         ) { yaoDataList = YaoCreator.randomList(count) }
     }
 }

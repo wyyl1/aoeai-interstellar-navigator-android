@@ -40,9 +40,9 @@ fun NumberView() {
 
         ControlPanel(
             modifier = Modifier.align(Alignment.BottomCenter),
-            onCountSelected = { count = it },
-            initialCount = count,
-            counts = (1..9).toList()
+            onNumberSelected = { count = it },
+            initialNumber = count,
+            numbers = (1..9).toList()
         ) { numbers = NumberCreator.randomList(count) }
     }
 }

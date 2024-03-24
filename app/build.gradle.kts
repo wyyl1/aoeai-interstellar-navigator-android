@@ -117,6 +117,7 @@ dependencies {
 
     testImplementation(libs.assertj.core)
     testImplementation(libs.junit.jupiter.api)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testRuntimeOnly(libs.junit.jupiter.engine)
 
     androidTestImplementation(libs.androidx.junit)

@@ -19,27 +19,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun ControlPanel(
     modifier: Modifier,
-    initialCount: Int,
-    counts: List<Int>,
-    onCountSelected: (Int) -> Unit,
+    initialNumber: Int,
+    numbers: List<Int>,
+    onNumberSelected: (Int) -> Unit,
     onClick: () -> Unit
 ) {
-    var count by remember { mutableIntStateOf(initialCount) }
+    var number by remember { mutableIntStateOf(initialNumber) }
 
     Column(
         modifier = modifier
     ) {
         val columnModifier = Modifier.align(Alignment.CenterHorizontally)
-        CountText(count = count, modifier = columnModifier)
-        ChooseCountButtons(counts = counts, modifier = columnModifier) {
-            count = it
-            onCountSelected(it)
+        NumberText(number = number, modifier = columnModifier)
+        ChooseNumberButtons(numbers = numbers, modifier = columnModifier) {
+            number = it
+            onNumberSelected(it)
         }
         RandomButton(
             modifier = columnModifier,
@@ -49,21 +50,21 @@ fun ControlPanel(
 }
 
 @Composable
-private fun CountText(count: Int, modifier: Modifier) {
+private fun NumberText(number: Int, modifier: Modifier) {
     Text(
-        modifier = modifier,
-        text = "$count",
+        modifier = modifier.testTag("numberText"),
+        text = "$number",
         fontSize = 30.sp,
         color = Color.Black
     )
 }
 
 @Composable
-private fun ChooseCountButtons(counts: List<Int>, modifier: Modifier, onCountSelected: (Int) -> Unit) {
-    LazyRow(modifier = modifier) {
-        itemsIndexed(counts) { index, count ->
-            ChooseCountButton(text = "$count", onClick = { onCountSelected(count) })
-            if (index < counts.size - 1) {
+private fun ChooseNumberButtons(numbers: List<Int>, modifier: Modifier, onNumberSelected: (Int) -> Unit) {
+    LazyRow(modifier = modifier.testTag("numberButtons")) {
+        itemsIndexed(numbers) { index, number ->
+            ChooseNumberButton(text = "$number", onClick = { onNumberSelected(number) })
+            if (index < numbers.size - 1) {
                 Spacer(modifier = Modifier.size(10.dp))
             }
         }
@@ -83,7 +84,7 @@ private fun RandomButton(modifier: Modifier, onClick: () -> Unit) {
 }
 
 @Composable
-fun ChooseCountButton(text: String, onClick: () -> Unit) {
+fun ChooseNumberButton(text: String, onClick: () -> Unit) {
     FilledTonalButton(onClick = { onClick() }) {
         Text(text)
     }
