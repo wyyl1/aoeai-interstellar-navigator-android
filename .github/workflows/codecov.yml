@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "no" | avdmanager create avd --force --name testEmulator --abi x86 --package "system-images;android-28;default;x86"
       - name: Check valid adv list
-        run: emulator -list-avds
+        run: $ANDROID_HOME/emulator/emulator -list-avds
       - name: Start AVD
         run: |
           $ANDROID_HOME/emulator/emulator -avd testEmulator -no-audio -no-window &
