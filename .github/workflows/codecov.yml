@@ -22,9 +22,16 @@ jobs:
         run: |
           yes | sdkmanager --licenses
           sdkmanager "system-images;android-28;default;x86"
-      - name: Create and start emulator
+#      - name: Create and start emulator
+#        run: |
+#          echo "no" | avdmanager create avd --force --name testEmulator --abi default/x86 --package "system-images;android-28;default;x86"
+#          $ANDROID_HOME/emulator/emulator -avd testEmulator -no-audio -no-window &
+#          $ANDROID_HOME/platform-tools/adb wait-for-device
+      - name: Create AVD
         run: |
-          echo "no" | avdmanager create avd --force --name testEmulator --abi default/x86 --package "system-images;android-28;default;x86"
+          echo "no" | avdmanager create avd --force --name testEmulator --abi x86 --package "system-images;android-28;default;x86"
+      - name: Start AVD
+        run: |
           $ANDROID_HOME/emulator/emulator -avd testEmulator -no-audio -no-window &
           $ANDROID_HOME/platform-tools/adb wait-for-device
       - name: Grant execute permission for gradlew
