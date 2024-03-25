@@ -29,7 +29,7 @@ jobs:
 #          $ANDROID_HOME/platform-tools/adb wait-for-device
       - name: Create AVD
         run: |
-          echo "no" | avdmanager create avd --name testEmulator
+          echo "no" | $ANDROID_HOME/emulator/emulator create avd --name testEmulator
 #      - name: Check valid adv list
 #        run: $ANDROID_HOME/emulator/emulator -avd
       - name: Start AVD
