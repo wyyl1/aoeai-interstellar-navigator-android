@@ -28,7 +28,7 @@ jobs:
       - name: Check valid adv list
         run: avdmanager list avd
       - name: List AVD files
-        run: ls -la $HOME/.android/avd
+        run: ls -la $HOME/.config/.android/avd
       - name: Start AVD
         run: |
           $ANDROID_HOME/emulator/emulator /home/runner/.config/.android/avd/android-28.avd -no-audio -no-window &
