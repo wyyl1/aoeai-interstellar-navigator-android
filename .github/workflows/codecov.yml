@@ -16,6 +16,12 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+      - name: Check Available System Images
+        run: sdkmanager --list | grep "system-images"
+      - name: Install system images and accept licenses
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "system-images;android-34;google_apis;x86
       - name: Create and start emulator
         run: |
           echo "y" | sdkmanager "system-images;android-34;default;"
