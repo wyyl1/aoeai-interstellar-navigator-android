@@ -29,9 +29,9 @@ jobs:
 #          $ANDROID_HOME/platform-tools/adb wait-for-device
       - name: Create AVD
         run: |
-          echo "no" | $ANDROID_HOME/emulator/emulator create avd --name testEmulator
-#      - name: Check valid adv list
-#        run: $ANDROID_HOME/emulator/emulator -avd
+          echo "no" | avdmanager --verbose create avd --force --name "android-28" --package "system-images;android-28;default;x86"
+      - name: Check valid adv list
+        run: avdmanager list avd
       - name: Start AVD
         run: |
           $ANDROID_HOME/emulator/emulator @testEmulator -no-audio -no-window &
